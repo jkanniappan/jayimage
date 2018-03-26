@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property resource="imagedownloader.properties"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logger.logfile.path}/image_downloader.log</file>
+
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logger.logfile.path}/sso.log.%d{yyyy-MM-dd}.%i</fileNamePattern>
+            <maxFileSize>${logger.logfile.size}</maxFileSize>
+            <maxHistory>${logger.logfile.count}</maxHistory>
+        </rollingPolicy>
+
+    </appender>
+
+    <logger name="com.imageTest" level="${logger.log.level}"/>
+
+    <root level="${logger.logroot.level}">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>
