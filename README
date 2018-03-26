@@ -1,0 +1,6 @@
+## Get MARS ROVER Images For the given Earth Dates using Apache HTTP client
+
+1) The 'imagedownloader.properties' has the required configuration, make sure 'logs', 'images' 
+	directories available in your environment
+2) src/main/java, src/main/resources directories should be in classpath
+2) Execute Main method of ImageDownloader.class to get the images 
